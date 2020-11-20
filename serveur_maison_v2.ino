@@ -5,16 +5,20 @@
 */
 
 // Reformat code: ctrl K + D
+// Comment code: ctrl + K + C
+// Uncomment code: ctrl + K + U
 
-#include "Led.h"
+#include "src/Runnable.h"
+#include "src/Led.h"
+
+Runnable* Runnable::headRunnable = NULL;
 
 #define LED_PIN LED_BUILTIN
-
 Led led(LED_PIN);
 
 void setup()
 {
-	led.setup();
+	Runnable::setupAll();
 }
 
 unsigned long startTimeMs = 500;
@@ -22,7 +26,7 @@ boolean test = true;
 
 void loop()
 {
-	led.loop();
+	Runnable::loopAll();
 
 	if (test)
 	{

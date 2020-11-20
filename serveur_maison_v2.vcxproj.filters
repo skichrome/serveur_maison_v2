@@ -24,12 +24,15 @@
     <ClInclude Include="__vm\.serveur_maison_v2.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Led.h">
+    <ClInclude Include="src\Led.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Runnable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Led.cpp">
+    <ClCompile Include="src\Led.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,15 +1,10 @@
-// Led.h
-
 #ifndef _LED_h
 #define _LED_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "arduino.h"
-#else
-#include "WProgram.h"
-#endif
+#include "Arduino.h"
+#include "Runnable.h"
 
-class Led
+class Led : public Runnable
 {
 private:
 	byte pin;
@@ -37,12 +32,14 @@ private:
 	unsigned long startDurationMs = 0L;
 
 public:
-	Led(byte pin);
-
-	void setup();
-	void loop();
+	Led(byte attachTo) :
+		pin(attachTo) { }
 
 	void blinkErrorCode(unsigned int code);
+
+protected:
+	void setup();
+	void loop();
 };
 
 #endif

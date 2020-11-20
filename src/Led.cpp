@@ -1,13 +1,12 @@
-// 
-// 
-// 
+/*
+* Setup a led to be used for debug purposes: input a number (x) to blinkErrorCode(x) and
+* this class will blink the led x times, and make a pause before re-blink.
+* 
+* Note that if you re-call blinkErrorCode before the previous blink is ended the code will
+* be resetted to your new value and no pause will be made. Make your code false.
+*/
 
 #include "Led.h"
-
-Led::Led(byte pin)
-{
-	this->pin = pin;
-}
 
 void Led::setup()
 {
