@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/src/utils/credentials.h
+/src/utils/ProjectCredentials.h

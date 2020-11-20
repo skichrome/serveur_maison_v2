@@ -3,7 +3,7 @@
 * this class will blink the led x times, and make a pause before re-blink.
 * 
 * Note that if you re-call blinkErrorCode before the previous blink is ended the code will
-* be resetted to your new value and no pause will be made. Make your code false.
+* not be blinked.
 */
 
 #include "Led.h"
@@ -63,5 +63,8 @@ void Led::loop()
 
 void Led::blinkErrorCode(unsigned int code)
 {
+	if (cycleCount != 0)
+		return;
+
 	cycleCount = code + 1;
 }

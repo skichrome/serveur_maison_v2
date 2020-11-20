@@ -8,16 +8,22 @@
 // Comment code: ctrl + K + C
 // Uncomment code: ctrl + K + U
 
+#include <ESP8266WiFi.h>
+#include <Adafruit_MQTT_Client.h>
 #include "src/Runnable.h"
 #include "src/Led.h"
+#include "src/MqttManager.h"
 
 Runnable* Runnable::headRunnable = NULL;
 
 #define LED_PIN LED_BUILTIN
-Led led(LED_PIN);
+Led led = Led(LED_PIN);
+MqttManager manager = MqttManager("esp8266/pubTest");
 
 void setup()
 {
+	Serial.begin(115200);
+	Serial.println("main setup called");
 	Runnable::setupAll();
 }
 
@@ -32,6 +38,12 @@ void loop()
 	{
 		test = false;
 		led.blinkErrorCode(10);
+		startTimeMs = millis();
+	}
+
+	if (millis() - startTimeMs > 5000)
+	{
+		manager.sendMsg("Imotep");
 		startTimeMs = millis();
 	}
 }
