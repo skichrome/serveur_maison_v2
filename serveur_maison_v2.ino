@@ -12,18 +12,21 @@
 #include <Adafruit_MQTT_Client.h>
 #include "src/Runnable.h"
 #include "src/Led.h"
+#include "src/WifiManager.h"
 #include "src/MqttManager.h"
+
+#define LED_PIN LED_BUILTIN
+
+WiFiClient client;
 
 Runnable* Runnable::headRunnable = NULL;
 
-#define LED_PIN LED_BUILTIN
 Led led = Led(LED_PIN);
-MqttManager manager = MqttManager("esp8266/pubTest");
+WifiManager wifiManager = WifiManager(led);
+MqttManager mqttManager = MqttManager(client, led, wifiManager, "esp8266/pubTest");
 
 void setup()
 {
-	Serial.begin(115200);
-	Serial.println("main setup called");
 	Runnable::setupAll();
 }
 
@@ -34,16 +37,9 @@ void loop()
 {
 	Runnable::loopAll();
 
-	if (test)
-	{
-		test = false;
-		led.blinkErrorCode(10);
-		startTimeMs = millis();
-	}
-
 	if (millis() - startTimeMs > 5000)
 	{
-		manager.sendMsg("Imotep");
+		mqttManager.sendMsg("Imotep");
 		startTimeMs = millis();
 	}
 }

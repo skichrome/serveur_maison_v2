@@ -9,38 +9,36 @@
 #include "Runnable.h"
 #include "utils/ProjectCredentials.h"
 
+#include "Led.h"
+#include "WifiManager.h"
+
 class MqttManager : public Runnable
 {
 private:
-	enum WifiState
-	{
-		WIFI_DISCONNECTED = 0,
-		WIFI_CONNECTING = 1,
-		WIFI_CONNECTED = 2
-	} wifiConnectState;
-
 	enum MqttState
 	{
-		MQTT_DISCONNECTED = 0,
-		MQTT_TIMEOUT = 1,
-		MQTT_CONNECTED = 2
+		DISCONNECTED = 0,
+		TIMEOUT = 1,
+		CONNECTED = 2
 	} mqttConnectState;
-
-	unsigned long connectDelayMs = 0L;
-	const unsigned long CONNECT_DEBOUNCE_MS = 10L;
 
 	uint8_t conn;
 	uint8_t mqttTimeout = 4;
 
-	WiFiClient client;
+	Led& led;
+	WifiManager& wifiManager;
+	WiFiClient& client;
+
 	Adafruit_MQTT_Client mqtt;
 	Adafruit_MQTT_Publish publishTest;
 
-	void connectWifi();
 	void connectMqtt();
 
 public:
-	MqttManager(char topic[]) :
+	MqttManager(WiFiClient& mClient, Led& mLed, WifiManager& mManager, char topic[]) :
+		client(mClient),
+		led(mLed),
+		wifiManager(mManager),
 		mqtt(Adafruit_MQTT_Client(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_PWD)),
 		publishTest(&mqtt, topic)
 	{}

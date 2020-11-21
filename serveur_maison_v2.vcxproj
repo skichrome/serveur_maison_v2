@@ -127,11 +127,19 @@
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
       <DeploymentContent>true</DeploymentContent>
     </ClInclude>
+    <ClInclude Include="src\WifiManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="__vm\.serveur_maison_v2.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Led.cpp" />
     <ClCompile Include="src\MqttManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="src\WifiManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
