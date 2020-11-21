@@ -25,29 +25,27 @@ private:
 	uint8_t conn;
 	uint8_t mqttTimeout = 4;
 
-	Led& led;
 	WifiManager& wifiManager;
 	WiFiClient& client;
 
-	Adafruit_MQTT_Client mqtt;
-	Adafruit_MQTT_Publish publishTest;
-
 	void connectMqtt();
 
+protected:
+	Led& led;
+	Adafruit_MQTT_Client mqtt;
+
+	void setup();
+	void loop();
+
+	boolean isMqttConnected();
+
 public:
-	MqttManager(WiFiClient& mClient, Led& mLed, WifiManager& mManager, char topic[]) :
+	MqttManager(WiFiClient& mClient, Led& mLed, WifiManager& mManager) :
 		client(mClient),
 		led(mLed),
 		wifiManager(mManager),
-		mqtt(Adafruit_MQTT_Client(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_PWD)),
-		publishTest(&mqtt, topic)
+		mqtt(Adafruit_MQTT_Client(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_PWD))
 	{}
-
-	void sendMsg(char data[]);
-
-protected:
-	void setup();
-	void loop();
 };
 
 #endif

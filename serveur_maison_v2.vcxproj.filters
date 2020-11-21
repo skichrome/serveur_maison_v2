@@ -39,6 +39,9 @@
     <ClInclude Include="src\WifiManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\SendMessageMqttManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Led.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WifiManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SendMessageMqttManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

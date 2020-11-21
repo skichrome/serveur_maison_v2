@@ -122,6 +122,10 @@
     </ClInclude>
     <ClInclude Include="src\Runnable.h" />
     <ClInclude Include="src\Led.h" />
+    <ClInclude Include="src\SendMessageMqttManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\utils\ProjectCredentials.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
@@ -136,6 +140,10 @@
   <ItemGroup>
     <ClCompile Include="src\Led.cpp" />
     <ClCompile Include="src\MqttManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="src\SendMessageMqttManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>

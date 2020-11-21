@@ -1,8 +1,6 @@
 #include "MqttManager.h"
 
-void MqttManager::setup()
-{
-}
+void MqttManager::setup() { }
 
 void MqttManager::loop()
 {
@@ -34,11 +32,7 @@ void MqttManager::connectMqtt()
 	}
 }
 
-void MqttManager::sendMsg(char data[])
+boolean MqttManager::isMqttConnected()
 {
-	if (mqttConnectState == MqttManager::CONNECTED)
-	{
-		if (!publishTest.publish(data))
-			led.blinkErrorCode(5);
-	}
+	return mqttConnectState == MqttManager::CONNECTED;
 }

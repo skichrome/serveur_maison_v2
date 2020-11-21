@@ -13,7 +13,7 @@
 #include "src/Runnable.h"
 #include "src/Led.h"
 #include "src/WifiManager.h"
-#include "src/MqttManager.h"
+#include "src/SendMessageMqttManager.h"
 
 #define LED_PIN LED_BUILTIN
 
@@ -23,7 +23,8 @@ Runnable* Runnable::headRunnable = NULL;
 
 Led led = Led(LED_PIN);
 WifiManager wifiManager = WifiManager(led);
-MqttManager mqttManager = MqttManager(client, led, wifiManager, "esp8266/pubTest");
+
+SendMessageMqttManager publisher = SendMessageMqttManager(client, led, wifiManager, "esp8266/pubTest");
 
 void setup()
 {
@@ -39,7 +40,7 @@ void loop()
 
 	if (millis() - startTimeMs > 5000)
 	{
-		mqttManager.sendMsg("Imotep");
+		publisher.sendMessage("Imotep");
 		startTimeMs = millis();
 	}
 }
