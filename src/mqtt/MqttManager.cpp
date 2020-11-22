@@ -29,7 +29,10 @@ void MqttManager::loop()
 				mqttTimeout = 4;
 			}
 			else if (mqttTimeout-- <= 0)
+			{
 				mqttConnectState = MqttManager::TIMEOUT;
+				timeoutDelayMs = millis();
+			}
 			break;
 		case MqttManager::CONNECTED:
 			if (!mqttClient.connected())
@@ -42,6 +45,11 @@ void MqttManager::loop()
 			}
 			break;
 		case MqttManager::TIMEOUT:
+			if (millis() - timeoutDelayMs >= TIMEOUT_DELAY_MS)
+			{
+				mqttConnectState = MqttManager::DISCONNECTED;
+				timeoutDelayMs = millis();
+			}
 			led.blinkErrorCode(9);
 			break;
 		default:

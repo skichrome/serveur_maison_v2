@@ -25,6 +25,9 @@ private:
 	unsigned long pingDelayMs = 0L;
 	const unsigned long PING_DELAY_MS = 1000L;
 
+	unsigned long timeoutDelayMs = 0L;
+	const unsigned long TIMEOUT_DELAY_MS = 60000L;
+
 	WifiManager wifiManager;
 
 	uint8_t conn;
