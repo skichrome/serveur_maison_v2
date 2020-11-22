@@ -30,16 +30,25 @@
     <ClInclude Include="src\Runnable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\MqttManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\utils\ProjectCredentials.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\WifiManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SendMessageMqttManager.h">
+    <ClInclude Include="src\mqtt\MqttManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mqtt\MqttMessageSender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mqtt\MqttMessageReceiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\yeelight\YeelightReceiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\yeelight\YeelightLamp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,13 +56,22 @@
     <ClCompile Include="src\Led.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MqttManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\WifiManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SendMessageMqttManager.cpp">
+    <ClCompile Include="src\mqtt\MqttManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mqtt\MqttMessageSender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mqtt\MqttMessageReceiver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\yeelight\YeelightReceiver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\yeelight\YeelightLamp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

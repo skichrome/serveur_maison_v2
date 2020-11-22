@@ -2,9 +2,21 @@
 
 void WifiManager::setup()
 {
+	wifiConnectState = WifiManager::DISCONNECTED;
+
+	do
+	{
+		connectWifi();
+		delay(20);
+	} while (wifiConnectState != WifiManager::CONNECTED);
 }
 
 void WifiManager::loop()
+{
+	connectWifi();
+}
+
+void WifiManager::connectWifi()
 {
 	switch (wifiConnectState)
 	{
@@ -15,18 +27,20 @@ void WifiManager::loop()
 	case WifiManager::CONNECTING:
 		if (millis() - connectDelayMs > CONNECT_DEBOUNCE_MS)
 		{
-			connectWifi();
+			handleWifiError();
 			connectDelayMs = millis();
 		}
 		break;
 	case WifiManager::CONNECTED:
+		if (WiFi.status() != WL_CONNECTED)
+			wifiConnectState = WifiManager::DISCONNECTED;
 		break;
 	default:
 		break;
 	}
 }
 
-void WifiManager::connectWifi()
+void WifiManager::handleWifiError()
 {
 	switch (WiFi.status())
 	{
@@ -50,4 +64,9 @@ void WifiManager::connectWifi()
 boolean WifiManager::isWifiConnected()
 {
 	return wifiConnectState == WifiManager::CONNECTED;
+}
+
+WiFiClient& WifiManager::getClient()
+{
+	return client;
 }

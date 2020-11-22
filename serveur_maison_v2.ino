@@ -8,31 +8,39 @@
 // Comment code: ctrl + K + C
 // Uncomment code: ctrl + K + U
 
-#include <ESP8266WiFi.h>
-#include <Adafruit_MQTT_Client.h>
+#include <ArduinoMqttClient.h>
+
 #include "src/Runnable.h"
 #include "src/Led.h"
-#include "src/WifiManager.h"
-#include "src/SendMessageMqttManager.h"
+
+#include "src/mqtt/MqttManager.h"
+#include "src/mqtt/MqttMessageSender.h"
+
+#include "src/yeelight/YeelightLamp.h"
+#include "src/yeelight/YeelightReceiver.h"
 
 #define LED_PIN LED_BUILTIN
-
-WiFiClient client;
+#define MQTT_TOPIC_PREFIX "esp8266-server-home/"
 
 Runnable* Runnable::headRunnable = NULL;
 
 Led led = Led(LED_PIN);
-WifiManager wifiManager = WifiManager(led);
+MqttManager mqttManager = MqttManager(led);
 
-SendMessageMqttManager publisher = SendMessageMqttManager(client, led, wifiManager, "esp8266/pubTest");
+MqttMessageSender publisher = MqttMessageSender(mqttManager, MQTT_TOPIC_PREFIX "pubTest", led);
+
+YeelightReceiver lampReceiver = YeelightReceiver(mqttManager, MQTT_TOPIC_PREFIX "yeelight", led);
 
 void setup()
 {
+	Serial.begin(115200);
 	Runnable::setupAll();
 }
 
 unsigned long startTimeMs = 500;
 boolean test = true;
+
+MqttClient client = mqttManager.getClient();
 
 void loop()
 {

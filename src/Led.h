@@ -31,15 +31,15 @@ private:
 
 	unsigned long startDurationMs = 0L;
 
+protected:
+	virtual void setup();
+	virtual void loop();
+
 public:
 	Led(byte attachTo) :
 		pin(attachTo) { }
 
 	void blinkErrorCode(unsigned int code);
-
-protected:
-	void setup();
-	void loop();
 };
 
 #endif

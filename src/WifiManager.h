@@ -23,12 +23,14 @@ private:
 	const unsigned long CONNECT_DEBOUNCE_MS = 10L;
 
 	Led& led;
+	WiFiClient client;
 
 	void connectWifi();
+	void handleWifiError();
 
 protected:
-	void setup();
-	void loop();
+	virtual void setup();
+	virtual void loop();
 
 public:
 	WifiManager(Led& mLed) :
@@ -36,6 +38,8 @@ public:
 	{}
 
 	boolean isWifiConnected();
+
+	WiFiClient& getClient();
 };
 
 #endif
