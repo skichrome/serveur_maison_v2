@@ -10,7 +10,7 @@
 
 #include <ArduinoMqttClient.h>
 
-#include "src/Runnable.h"
+#include "src/utils/Runnable.h"
 #include "src/Led.h"
 
 #include "src/mqtt/MqttManager.h"
@@ -18,8 +18,10 @@
 
 #include "src/yeelight/YeelightLamp.h"
 #include "src/yeelight/YeelightReceiver.h"
+#include "src/sensors/LampControlMotionSensor.h"
 
 #define LED_PIN LED_BUILTIN
+#define MOTION_SENSOR_PIN 16
 #define MQTT_TOPIC_PREFIX "esp8266-server-home/"
 
 Runnable* Runnable::headRunnable = NULL;
@@ -29,7 +31,9 @@ MqttManager mqttManager = MqttManager(led);
 
 MqttMessageSender publisher = MqttMessageSender(mqttManager, MQTT_TOPIC_PREFIX "pubTest", led);
 
-YeelightReceiver lampReceiver = YeelightReceiver(mqttManager, MQTT_TOPIC_PREFIX "yeelight", led);
+YeelightLamp lamp = YeelightLamp();
+YeelightReceiver lampReceiver = YeelightReceiver(mqttManager, lamp, MQTT_TOPIC_PREFIX "yeelight", led);
+LampControlMotionSensor lampMotionSensor = LampControlMotionSensor(MOTION_SENSOR_PIN, lamp);
 
 void setup()
 {

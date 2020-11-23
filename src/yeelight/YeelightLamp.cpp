@@ -11,11 +11,18 @@ void YeelightLamp::loop()
 void YeelightLamp::powerOn()
 {
 	toggleLight(true);
+	state = YeelightLamp::POWER_ON;
 }
 
 void YeelightLamp::powerOff()
 {
 	toggleLight(false);
+	state = YeelightLamp::POWER_OFF;
+}
+
+void YeelightLamp::setModeAuto(boolean isAuto)
+{
+	isAutoEnabled = isAuto;
 }
 
 void YeelightLamp::toggleLight(const boolean lampState)
@@ -25,6 +32,11 @@ void YeelightLamp::toggleLight(const boolean lampState)
 		client.println(serializeJsonCommand(lampState));
 		client.stop();
 	}
+}
+
+boolean YeelightLamp::isInModeAuto()
+{
+	return isAutoEnabled;
 }
 
 String YeelightLamp::serializeJsonCommand(const boolean lampState)

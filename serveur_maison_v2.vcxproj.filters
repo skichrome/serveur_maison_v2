@@ -27,9 +27,6 @@
     <ClInclude Include="src\Led.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Runnable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\utils\ProjectCredentials.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,6 +46,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\yeelight\YeelightLamp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\Runnable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sensors\LampControlMotionSensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sensors\MotionSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\yeelight\YeelightLamp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\LampControlMotionSensor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\MotionSensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

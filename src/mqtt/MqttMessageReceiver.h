@@ -3,6 +3,7 @@
 
 #include "arduino.h"
 
+#include "../utils/Runnable.h"
 #include "MqttManager.h"
 
 class MqttMessageReceiver : public Runnable

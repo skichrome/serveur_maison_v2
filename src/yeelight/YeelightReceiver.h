@@ -9,16 +9,16 @@
 class YeelightReceiver : public MqttMessageReceiver
 {
 private:
-	YeelightLamp lamp;
+	YeelightLamp& lamp;
 	Led& led;
 
 protected:
 	virtual void onMessageReceived(String message);
 
 public:
-	YeelightReceiver(MqttManager& mManager, char topic[], Led& mLed) :
+	YeelightReceiver(MqttManager& mManager, YeelightLamp& mLamp, char topic[], Led& mLed) :
 		MqttMessageReceiver(mManager, topic, mLed),
-		lamp(YeelightLamp()),
+		lamp(mLamp),
 		led(mLed)
 	{}
 };

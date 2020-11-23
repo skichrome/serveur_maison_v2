@@ -10,4 +10,8 @@ void YeelightReceiver::onMessageReceived(String message)
 		lamp.powerOn();
 	else if (message == "POWER_OFF")
 		lamp.powerOff();
+	else if (message == "ENABLE_AUTO")
+		lamp.setModeAuto(true);
+	else if (message == "DISABLE_AUTO")
+		lamp.setModeAuto(false);
 }

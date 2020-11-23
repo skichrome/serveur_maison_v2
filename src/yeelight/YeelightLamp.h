@@ -7,7 +7,7 @@
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 
-#include "../Runnable.h"
+#include "../utils/Runnable.h"
 #include "../utils/ProjectCredentials.h"
 
 class YeelightLamp : Runnable
@@ -17,7 +17,9 @@ private:
 	{
 		POWER_ON,
 		POWER_OFF
-	};
+	} state;
+
+	boolean isAutoEnabled = true;
 
 	WiFiClient client;
 	unsigned long requestId = 0;
@@ -31,11 +33,14 @@ protected:
 
 public:
 	YeelightLamp() :
-	client(WiFiClient())
+		client(WiFiClient())
 	{};
 
 	void powerOn();
 	void powerOff();
+	void setModeAuto(boolean isAuto);
+
+	boolean isInModeAuto();
 };
 
 #endif

@@ -1,5 +1,3 @@
-// Runnable.h
-
 #ifndef _RUNNABLE_h
 #define _RUNNABLE_h
 
