@@ -17,15 +17,21 @@ private:
 	{
 		POWER_ON,
 		POWER_OFF
-	} state;
+	} state = POWER_OFF;
+
+	unsigned long readLampStateDelayMs = 0L;
+	const unsigned long READ_LAMP_DELAY_MS = 15000L;
 
 	boolean isAutoEnabled = true;
 
 	WiFiClient client;
-	unsigned long requestId = 0;
+	unsigned long requestId = 1;
+	unsigned long requestStateId = 2;
 
 	void toggleLight(const boolean lampState);
 	String serializeJsonCommand(const boolean lampState);
+	String serializeJsonStateCommand();
+	void deserializeJsonStateCommand(String json);
 
 protected:
 	virtual void setup();

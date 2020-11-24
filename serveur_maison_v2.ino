@@ -21,7 +21,7 @@
 #include "src/sensors/LampControlMotionSensor.h"
 
 #define LED_PIN LED_BUILTIN
-#define MOTION_SENSOR_PIN 16
+#define MOTION_SENSOR_GPIO 5
 #define MQTT_TOPIC_PREFIX "esp8266-server-home/"
 
 Runnable* Runnable::headRunnable = NULL;
@@ -33,7 +33,7 @@ MqttMessageSender publisher = MqttMessageSender(mqttManager, MQTT_TOPIC_PREFIX "
 
 YeelightLamp lamp = YeelightLamp();
 YeelightReceiver lampReceiver = YeelightReceiver(mqttManager, lamp, MQTT_TOPIC_PREFIX "yeelight", led);
-LampControlMotionSensor lampMotionSensor = LampControlMotionSensor(MOTION_SENSOR_PIN, lamp);
+LampControlMotionSensor lampMotionSensor = LampControlMotionSensor(MOTION_SENSOR_GPIO, lamp);
 
 void setup()
 {
