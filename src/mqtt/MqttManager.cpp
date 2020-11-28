@@ -1,4 +1,4 @@
-#include "MqttManager.h"
+#include "mqtt/MqttManager.h"
 
 void MqttManager::setup()
 {
@@ -63,7 +63,7 @@ boolean MqttManager::isMqttConnected()
 	return mqttConnectState == MqttManager::CONNECTED;
 }
 
-MqttClient& MqttManager::getClient()
+MqttClient &MqttManager::getClient()
 {
 	return mqttClient;
 }

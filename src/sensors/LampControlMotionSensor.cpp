@@ -1,4 +1,4 @@
-#include "LampControlMotionSensor.h"
+#include "sensors/LampControlMotionSensor.h"
 
 void LampControlMotionSensor::onStateChanged(boolean state)
 {

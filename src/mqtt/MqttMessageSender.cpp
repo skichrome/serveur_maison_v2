@@ -1,4 +1,4 @@
-#include "MqttMessageSender.h"
+#include "mqtt/MqttMessageSender.h"
 
 void MqttMessageSender::setup()
 {
@@ -8,7 +8,7 @@ void MqttMessageSender::loop()
 {
 }
 
-void MqttMessageSender::sendMessage(char message[])
+void MqttMessageSender::sendMessage(const char message[])
 {
 	if (manager.isMqttConnected())
 	{

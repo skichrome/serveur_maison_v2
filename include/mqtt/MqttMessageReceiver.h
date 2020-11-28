@@ -1,7 +1,7 @@
 #ifndef _ReceiveMessageMqttManager_h
 #define _ReceiveMessageMqttManager_h
 
-#include "arduino.h"
+#include <Arduino.h>
 
 #include "../utils/Runnable.h"
 #include "MqttManager.h"
@@ -30,7 +30,7 @@ protected:
 	virtual void onMessageReceived(String message) = 0;
 
 public:
-	MqttMessageReceiver(MqttManager& mManager, char mTopic[], Led& mLed) :
+	MqttMessageReceiver(MqttManager& mManager, const char mTopic[], Led& mLed) :
 		manager(mManager),
 		mqttClient(mManager.getClient()),
 		led(mLed),

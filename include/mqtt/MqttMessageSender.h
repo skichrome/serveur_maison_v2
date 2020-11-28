@@ -1,7 +1,7 @@
 #ifndef _SendMessageMqttManager_h
 #define _SendMessageMqttManager_h
 
-#include "arduino.h"
+#include <Arduino.h>
 
 #include "../utils/Runnable.h"
 #include "MqttManager.h"
@@ -27,7 +27,7 @@ public:
 		topic(mTopic)
 	{}
 
-	void sendMessage(char message[]);
+	void sendMessage(const char message[]);
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "MqttMessageReceiver.h"
+#include "mqtt/MqttMessageReceiver.h"
 
 void MqttMessageReceiver::setup()
 {
@@ -38,10 +38,8 @@ void MqttMessageReceiver::handleMessage()
 		Serial.println(mqttClient.messageTopic());
 		String msgStr = "";
 
-		unsigned int position = 0;
-
 		while (mqttClient.available())
-		{	
+		{
 			msgStr = mqttClient.readString();
 		}
 		onMessageReceived(msgStr);

@@ -3,9 +3,9 @@
 #ifndef _YeelightLamp_h
 #define _YeelightLamp_h
 
-#include "arduino.h"
-#include <ArduinoJson.h>
+#include <Arduino.h>
 #include <ESP8266WiFi.h>
+#include <ArduinoJson.h>
 
 #include "../utils/Runnable.h"
 #include "../utils/ProjectCredentials.h"

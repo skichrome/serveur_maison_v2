@@ -1,4 +1,4 @@
-#include "YeelightReceiver.h"
+#include "yeelight/YeelightReceiver.h"
 
 void YeelightReceiver::onMessageReceived(String message)
 {

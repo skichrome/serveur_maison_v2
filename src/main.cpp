@@ -1,24 +1,21 @@
-/*
- Name:		serveur_maison_v2.ino
- Created:	20/11/2020 12:11:01
- Author:	Toni
-*/
+#include <Arduino.h>
 
-// Reformat code: ctrl K + D
-// Comment code: ctrl + K + C
-// Uncomment code: ctrl + K + U
+/*
+ * Auto indent in VSCode on Linux: ctrl + shift + i
+ * Auto indent in VSCode on Windows: shift + alt + F ?
+*/
 
 #include <ArduinoMqttClient.h>
 
-#include "src/utils/Runnable.h"
-#include "src/Led.h"
+#include "utils/Runnable.h"
+#include "utils/Led.h"
 
-#include "src/mqtt/MqttManager.h"
-#include "src/mqtt/MqttMessageSender.h"
+#include "mqtt/MqttManager.h"
+#include "mqtt/MqttMessageSender.h"
 
-#include "src/yeelight/YeelightLamp.h"
-#include "src/yeelight/YeelightReceiver.h"
-#include "src/sensors/LampControlMotionSensor.h"
+#include "yeelight/YeelightLamp.h"
+#include "yeelight/YeelightReceiver.h"
+#include "sensors/LampControlMotionSensor.h"
 
 #define LED_PIN LED_BUILTIN
 #define MOTION_SENSOR_GPIO 5

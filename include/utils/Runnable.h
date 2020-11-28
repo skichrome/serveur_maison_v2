@@ -17,18 +17,8 @@ public:
 		headRunnable = this;
 	}
 
-	static void setupAll()
-	{
-		for (Runnable* r = headRunnable; r; r = r->nextRunnable)
-			r->setup();
-	}
-
-	static void loopAll()
-	{
-		for (Runnable* r = headRunnable; r; r = r->nextRunnable)
-			r->loop();
-	}
+	static void setupAll();
+	static void loopAll();
 };
 
 #endif
-

@@ -1,13 +1,7 @@
-// LampControlMotionSensor.h
-
 #ifndef _LampControlMotionSensor_h
 #define _LampControlMotionSensor_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+#include <Arduino.h>
 
 #include "MotionSensor.h"
 #include "../yeelight/YeelightLamp.h"

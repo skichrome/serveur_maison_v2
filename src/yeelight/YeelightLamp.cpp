@@ -1,4 +1,4 @@
-#include "YeelightLamp.h"
+#include "yeelight/YeelightLamp.h"
 
 void YeelightLamp::setup()
 {

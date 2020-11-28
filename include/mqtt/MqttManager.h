@@ -1,7 +1,7 @@
 #ifndef _MQTT_MANAGER_H
 #define _MQTT_MANAGER_H
 
-#include "arduino.h"
+#include <Arduino.h>
 
 #include <ESP8266WiFi.h>
 #include <ArduinoMqttClient.h>
@@ -9,8 +9,8 @@
 #include "../utils/Runnable.h"
 #include "../utils/ProjectCredentials.h"
 
-#include "../Led.h"
-#include "../WifiManager.h"
+#include "../utils/Led.h"
+#include "../wifi/WifiManager.h"
 
 class MqttManager : public Runnable
 {
@@ -28,29 +28,28 @@ private:
 	unsigned long timeoutDelayMs = 0L;
 	const unsigned long TIMEOUT_DELAY_MS = 60000L;
 
+	Led &led;
 	WifiManager wifiManager;
+	MqttClient mqttClient;
 
 	uint8_t conn;
 	uint8_t mqttTimeout = 4;
 
+
 protected:
 	virtual void setup();
 	virtual void loop();
-	
-	Led& led;
-	MqttClient mqttClient;
 
 public:
-	MqttManager(Led& mLed) :
-		led(mLed),
-		wifiManager(WifiManager(mLed)),
-		mqttClient(wifiManager.getClient())
-	{}
+	MqttManager(Led &mLed) : led(mLed),
+							 wifiManager(WifiManager(mLed)),
+							 mqttClient(wifiManager.getClient())
+	{
+	}
 
-	MqttClient& getClient();
+	MqttClient &getClient();
 
 	boolean isMqttConnected();
 };
 
 #endif
-
