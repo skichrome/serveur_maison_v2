@@ -44,19 +44,17 @@ void WifiManager::handleWifiError()
 {
 	switch (WiFi.status())
 	{
-	case WL_IDLE_STATUS:          // Wifi is changing state
-		break;
-	case WL_NO_SSID_AVAIL:        // Configured SSID is not available
+	case WL_NO_SSID_AVAIL: // Configured SSID is not available
 		led.blinkErrorCode(10);
 		break;
-	case WL_CONNECT_FAILED:       // Password is incorrect
+	case WL_CONNECT_FAILED: // Password is incorrect
 		led.blinkErrorCode(10);
 		break;
-	case WL_DISCONNECTED:         // The module isn't configured in STA (station) mode
-		break;
-	case WL_CONNECTED:            // Connexion successful
+	case WL_CONNECTED: // Connexion successful
 		wifiConnectState = WifiManager::CONNECTED;
 		led.blinkErrorCode(1);
+		break;
+	default:
 		break;
 	}
 }
@@ -66,7 +64,7 @@ boolean WifiManager::isWifiConnected()
 	return wifiConnectState == WifiManager::CONNECTED;
 }
 
-WiFiClient& WifiManager::getClient()
+WiFiClient &WifiManager::getClient()
 {
 	return client;
 }

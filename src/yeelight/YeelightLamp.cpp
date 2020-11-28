@@ -114,7 +114,7 @@ void YeelightLamp::deserializeJsonStateCommand(String json)
 		return;
 	}
 
-	const int id = doc["id"];
+	const unsigned long id = doc["id"];
 	const String currentState = doc["result"][0];
 
 	if (id == requestStateId)
