@@ -9,12 +9,6 @@ class Led : public Runnable
 private:
 	byte pin;
 
-	enum LedState
-	{
-		ENABLED = LOW,
-		DISABLED = HIGH
-	} ledState;
-
 	enum CycleState
 	{
 		WAITING = 0,
@@ -36,11 +30,9 @@ protected:
 	virtual void loop();
 
 public:
-	Led(byte attachTo) :
-		pin(attachTo) { }
+	Led(byte attachTo) : pin(attachTo) {}
 
 	void blinkErrorCode(unsigned int code);
 };
 
 #endif
-

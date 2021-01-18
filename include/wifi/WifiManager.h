@@ -2,7 +2,7 @@
 #define _WifiManager_h
 
 #include <Arduino.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 
 #include "utils/Runnable.h"
 #include "utils/ProjectCredentials.h"

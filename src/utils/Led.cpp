@@ -11,7 +11,7 @@
 void Led::setup()
 {
 	pinMode(pin, OUTPUT);
-	digitalWrite(pin, Led::DISABLED);
+	digitalWrite(pin, LOW);
 }
 
 void Led::loop()
@@ -21,7 +21,7 @@ void Led::loop()
 	case Led::WAITING:
 		if (cycleCount > 0)
 		{
-			digitalWrite(pin, Led::DISABLED);
+			digitalWrite(pin, LOW);
 			startDurationMs = millis();
 			cycleState = Led::POWER_ON;
 		}
@@ -30,7 +30,7 @@ void Led::loop()
 	case Led::POWER_ON:
 		if (millis() - startDurationMs > HIGH_DURATION_MS)
 		{
-			digitalWrite(pin, Led::DISABLED);
+			digitalWrite(pin, LOW);
 			startDurationMs = millis();
 			cycleState = Led::POWER_OFF;
 			cycleCount--;
@@ -39,7 +39,7 @@ void Led::loop()
 	case Led::POWER_OFF:
 		if (millis() - startDurationMs > LOW_DURATION_MS)
 		{
-			digitalWrite(pin, Led::ENABLED);
+			digitalWrite(pin, HIGH);
 			startDurationMs = millis();
 			cycleState = Led::POWER_ON;
 		}

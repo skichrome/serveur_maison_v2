@@ -17,9 +17,9 @@
 #include "yeelight/YeelightReceiver.h"
 #include "sensors/LampControlMotionSensor.h"
 
-#define LED_PIN LED_BUILTIN
+#define LED_PIN 2
 #define MOTION_SENSOR_GPIO 17
-#define MQTT_TOPIC_PREFIX "esp8266-server-home/"
+#define MQTT_TOPIC_PREFIX "esp32-server-home/"
 
 Runnable* Runnable::headRunnable = NULL;
 
