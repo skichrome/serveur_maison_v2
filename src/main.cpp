@@ -18,7 +18,7 @@
 #include "sensors/LampControlMotionSensor.h"
 
 #define LED_PIN LED_BUILTIN
-#define MOTION_SENSOR_GPIO 5
+#define MOTION_SENSOR_GPIO 17
 #define MQTT_TOPIC_PREFIX "esp8266-server-home/"
 
 Runnable* Runnable::headRunnable = NULL;
