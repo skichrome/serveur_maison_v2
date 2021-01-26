@@ -19,7 +19,7 @@ private:
 	State previousState = WAITING_TRIGGER;
 
 	unsigned long timeBetweenReadsMs = 0L;
-	const unsigned long TIME_BETWEEN_READS_MS = 500L;
+	const unsigned long TIME_BETWEEN_READS_MS = 1000L;
 
 protected:
 	virtual void setup();

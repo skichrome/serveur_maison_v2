@@ -9,12 +9,14 @@ void MotionSensor::loop()
 {
 	if (millis() - timeBetweenReadsMs > TIME_BETWEEN_READS_MS)
 	{
-	
-		if (digitalRead(pin))
+		if (!digitalRead(pin)) // INPUT_PULLUP => logic is inverted
 			state = MotionSensor::TRIGGERED;
 		else
 			state = MotionSensor::WAITING_TRIGGER;
-		
+
+		Serial.print("State: ");
+		Serial.println(state);
+
 		if (state != previousState)
 		{
 			switch (state)
